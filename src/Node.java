@@ -1,5 +1,3 @@
-import java.security.InvalidParameterException;
-
 public class Node { // acts as expression tree
 
 	private char operator;
@@ -9,16 +7,7 @@ public class Node { // acts as expression tree
 
 	// Node can have either operator or operand but not both
 	public Node(char operator) {
-		switch (operator) { // disallows invalid operators
-		case '+':
-		case '-':
-		case '*':
-		case '/':
-			this.operator = operator;
-			break;
-		default:
-			throw new InvalidParameterException("Invalid Operator");
-		}
+		this.operator = operator;
 	}
 
 	public Node(double operand) {
@@ -39,7 +28,7 @@ public class Node { // acts as expression tree
 		return output;
 	}
 
-	public void addChildren(Node left, Node right) {
+	public void addChildren(Node right, Node left) {
 		this.right = right;
 		this.left = left;
 	}
